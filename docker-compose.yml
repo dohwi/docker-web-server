@@ -1,0 +1,18 @@
+version: "3.8"
+
+networks:
+  web-server-network:
+    name: web-server-network
+
+services:
+  nginx:
+    container_name: nginx
+    image: nginx
+    restart: unless-stopped
+    networks:
+      - web-server-network
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
